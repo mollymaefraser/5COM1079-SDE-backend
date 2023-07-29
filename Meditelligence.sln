@@ -1,11 +1,16 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.WebAPI", "src\Meditelligence.WebAPI\Meditelligence.WebAPI.csproj", "{935E4B72-86B3-4028-9AF9-D0F4D8F297D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meditelligence.WebAPITests", "tests\Meditelligence.WebAPITests\Meditelligence.WebAPITests.csproj", "{2B93172F-69D1-4F66-8CE9-A194092BAD28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.WebAPITests", "tests\Meditelligence.WebAPITests\Meditelligence.WebAPITests.csproj", "{2B93172F-69D1-4F66-8CE9-A194092BAD28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.DataAccess", "src\Meditelligence.DataAccess\Meditelligence.DataAccess.csproj", "{0AE171F3-9F10-455D-9E24-37D94E09AA8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.Models", "src\Meditelligence.Models\Meditelligence.Models.csproj", "{7D7A9B03-3E62-4EC4-9BBE-62CFC0FB0E03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meditelligence.DTOs", "src\Meditelligence.DTOs\Meditelligence.DTOs.csproj", "{0270E014-D61B-4D58-8861-6EB6F55D8E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,18 @@ Global
 		{2B93172F-69D1-4F66-8CE9-A194092BAD28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B93172F-69D1-4F66-8CE9-A194092BAD28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B93172F-69D1-4F66-8CE9-A194092BAD28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE171F3-9F10-455D-9E24-37D94E09AA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE171F3-9F10-455D-9E24-37D94E09AA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE171F3-9F10-455D-9E24-37D94E09AA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE171F3-9F10-455D-9E24-37D94E09AA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D7A9B03-3E62-4EC4-9BBE-62CFC0FB0E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D7A9B03-3E62-4EC4-9BBE-62CFC0FB0E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D7A9B03-3E62-4EC4-9BBE-62CFC0FB0E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D7A9B03-3E62-4EC4-9BBE-62CFC0FB0E03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0270E014-D61B-4D58-8861-6EB6F55D8E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0270E014-D61B-4D58-8861-6EB6F55D8E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0270E014-D61B-4D58-8861-6EB6F55D8E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0270E014-D61B-4D58-8861-6EB6F55D8E17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
