@@ -1,5 +1,5 @@
 ﻿using Meditelligence.DataAccess.Context;
-using Meditelligence.Models.Models;
+using Meditelligence.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

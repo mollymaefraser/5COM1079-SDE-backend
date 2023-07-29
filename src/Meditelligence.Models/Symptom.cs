@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meditelligence.Models.Models
+namespace Meditelligence.Models
 {
     /// <summary>
     /// Schema definition for a symptom record in the database.

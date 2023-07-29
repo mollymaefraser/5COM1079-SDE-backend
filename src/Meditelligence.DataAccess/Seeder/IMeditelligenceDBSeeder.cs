@@ -1,4 +1,4 @@
-﻿using Meditelligence.Models.Models;
+﻿using Meditelligence.Models;
 
 namespace Meditelligence.DataAccess.Seeder
 {
@@ -7,5 +7,8 @@ namespace Meditelligence.DataAccess.Seeder
         IEnumerable<Illness> SeedIllnesses();
         IEnumerable<IllnessToSymptom> SeedIllnessToSymptoms();
         IEnumerable<Symptom> SeedSymptoms();
+        IEnumerable<Location> SeedLocations();
+        IEnumerable<LocationToService> SeedLocationToServices();
+        IEnumerable<Service> SeedServices();
     }
 }

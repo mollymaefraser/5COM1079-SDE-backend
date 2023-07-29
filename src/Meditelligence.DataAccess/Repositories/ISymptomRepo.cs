@@ -1,4 +1,4 @@
-﻿using Meditelligence.Models.Models;
+﻿using Meditelligence.Models;
 
 namespace Meditelligence.DataAccess.Repositories
 {
