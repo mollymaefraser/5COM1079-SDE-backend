@@ -47,6 +47,21 @@ namespace Meditelligence.DataAccess.Context
         public DbSet<Service> Services { get; set; }
 
         /// <summary>
+        /// Database set for all users.
+        /// </summary>
+        public DbSet<User> Users { get; set; }
+
+        /// <summary>
+        /// Database set for user logs.
+        /// </summary>
+        public DbSet<History> UserLogs { get; set; }
+
+        /// <summary>
+        /// Database set for join table between user log and symptoms.
+        /// </summary>
+        public DbSet<HistorySymptom> UserLogToSymptoms { get; set; }
+
+        /// <summary>
         /// Initialises DbContext object with options and seeder.
         /// </summary>
         /// <param name="options">The database options to be passed in</param>
@@ -65,6 +80,7 @@ namespace Meditelligence.DataAccess.Context
             modelBuilder.Entity<Location>().HasData(_seeder.SeedLocations());
             modelBuilder.Entity<LocationToService>().HasData(_seeder.SeedLocationToServices());
             modelBuilder.Entity<Service>().HasData(_seeder.SeedServices());
+            modelBuilder.Entity<User>().HasData(_seeder.SeedUsers());
         }
     }
 }
