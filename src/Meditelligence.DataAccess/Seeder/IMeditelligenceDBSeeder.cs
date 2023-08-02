@@ -10,5 +10,6 @@ namespace Meditelligence.DataAccess.Seeder
         IEnumerable<Location> SeedLocations();
         IEnumerable<LocationToService> SeedLocationToServices();
         IEnumerable<Service> SeedServices();
+        IEnumerable<User> SeedUsers();
     }
 }

@@ -36,5 +36,10 @@ namespace Meditelligence.Models
         [ForeignKey("SymptomRefID")]
         public ICollection<IllnessToSymptom> IllnessList { get; set; }
 
+        /// <summary>
+        /// A corresponding list of log that associate with this record.
+        /// </summary>
+        public ICollection<HistorySymptom> HistorySymptoms { get; set; }
+
     }
 }

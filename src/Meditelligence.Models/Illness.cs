@@ -40,5 +40,10 @@ namespace Meditelligence.Models
         /// <remarks>The set up of this list allows a many-to-many relationship.</remarks>
         [ForeignKey("IllnessRefID")]
         public ICollection<IllnessToSymptom> SymptomList { get; set; } 
+
+        /// <summary>
+        /// A list representing all logs this illness appears in.
+        /// </summary>
+        public ICollection<History> LogList { get; set; }
     }
 }

@@ -270,5 +270,23 @@ namespace Meditelligence.DataAccess.Seeder
                 },
             };
         }
+
+        public IEnumerable<User> SeedUsers() 
+        {
+            return new List<User>()
+            {
+                new User()
+                {
+                    UserID = 1,
+                    FirstName = "Admin",
+                    LastName = "User",
+                    IsAdmin = true,
+                    Email = "admin@testAdmin.com",
+                    Password = "password",
+                }
+            };
+        }
+
+
     }
 }
