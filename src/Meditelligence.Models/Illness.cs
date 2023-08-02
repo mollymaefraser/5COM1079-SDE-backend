@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meditelligence.Models.Models
+namespace Meditelligence.Models
 {
     /// <summary>
     /// Schema definition for an illness record in the database.

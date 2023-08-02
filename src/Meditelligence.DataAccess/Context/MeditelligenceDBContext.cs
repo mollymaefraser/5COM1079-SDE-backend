@@ -1,5 +1,5 @@
 ﻿using Meditelligence.DataAccess.Seeder;
-using Meditelligence.Models.Models;
+using Meditelligence.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,6 +32,21 @@ namespace Meditelligence.DataAccess.Context
         public DbSet<IllnessToSymptom> IllnessToSymptoms { get; set; }
 
         /// <summary>
+        /// Database set for all location records.
+        /// </summary>
+        public DbSet<Location> Locations { get; set; }
+
+        /// <summary>
+        /// Database set for join table between location and service.
+        /// </summary>
+        public DbSet<LocationToService> LocationToServices { get; set; }
+
+        /// <summary>
+        /// Database set for all service records.
+        /// </summary>
+        public DbSet<Service> Services { get; set; }
+
+        /// <summary>
         /// Initialises DbContext object with options and seeder.
         /// </summary>
         /// <param name="options">The database options to be passed in</param>
@@ -47,6 +62,9 @@ namespace Meditelligence.DataAccess.Context
             modelBuilder.Entity<Illness>().HasData(_seeder.SeedIllnesses());
             modelBuilder.Entity<Symptom>().HasData(_seeder.SeedSymptoms());
             modelBuilder.Entity<IllnessToSymptom>().HasData(_seeder.SeedIllnessToSymptoms());
+            modelBuilder.Entity<Location>().HasData(_seeder.SeedLocations());
+            modelBuilder.Entity<LocationToService>().HasData(_seeder.SeedLocationToServices());
+            modelBuilder.Entity<Service>().HasData(_seeder.SeedServices());
         }
     }
 }
