@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Read\" />
     <Folder Include="Post\" />
   </ItemGroup>
 
