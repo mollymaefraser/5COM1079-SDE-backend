@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.DTOs", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{332D3424-FF23-47EA-9E9F-EA4046EDC4BC}"
 	ProjectSection(SolutionItems) = preProject
-		docs\Data Set for Symptons Illnesses.csv = docs\Data Set for Symptons Illnesses.csv
+		docs\dataset.csv = docs\dataset.csv
 	EndProjectSection
 EndProject
 Global

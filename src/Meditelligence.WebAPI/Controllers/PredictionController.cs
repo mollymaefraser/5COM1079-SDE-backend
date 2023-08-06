@@ -1,4 +1,5 @@
 ﻿using Meditelligence.DataAccess.Context;
+using Meditelligence.DataAccess.Seeder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Services;
@@ -67,6 +68,15 @@ namespace Meditelligence.WebAPI.Controllers
             }
 
             return Ok("we made it!");
+        }
+
+        [HttpGet("SeedDataFromSpreadsheet")]
+        public ActionResult<FileRecord> GetFileRecords()
+        {
+            var result = CsvFilePopulator.ReadFileRecords();
+            CsvFilePopulator.PopulateDatabaseRecords(_context, result);
+
+            return Ok(result);
         }
     }
 }

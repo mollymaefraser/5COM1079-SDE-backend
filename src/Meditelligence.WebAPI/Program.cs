@@ -1,3 +1,5 @@
+using Meditelligence.DataAccess.Context;
+using Meditelligence.DataAccess.Seeder;
 using Meditelligence.WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 
