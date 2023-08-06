@@ -33,7 +33,7 @@ namespace Meditelligence.DataAccess.Repositories
             return _context.Symptoms.ToList();
         }
 
-        public Symptom GetIllnessById(int id)
+        public Symptom GetSymptomById(int id)
         {
             return _context.Symptoms.FirstOrDefault(i => i.SymptomID == id);
         }

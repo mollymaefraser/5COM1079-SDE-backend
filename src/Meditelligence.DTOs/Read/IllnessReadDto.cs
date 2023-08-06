@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,11 @@ namespace Meditelligence.DTOs.Read
     /// </summary>
     public class IllnessReadDto
     {
+        /// <summary>
+        /// The unique ID for this illness record.
+        /// </summary>
+        public int IllnessID { get; set; }
+
         /// <summary>
         /// The illness name.
         /// </summary>

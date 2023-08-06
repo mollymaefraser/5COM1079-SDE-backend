@@ -5,27 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meditelligence.DTOs.Read
+namespace Meditelligence.DTOs.Post
 {
     /// <summary>
     /// A DTO used for communicating information about a symptom.
     /// </summary>
-    public class SymptomReadDto
+    public class SymptomCreateDto
     {
-        /// <summary>
-        /// The unique identifier for this symptom
-        /// </summary>
-        public int SymptomID { get; set; }
-
         /// <summary>
         /// The name of the symptom.
         /// </summary>
+        [Required]
         public string SymptomName { get; set; }
 
         /// <summary>
         /// The description of the symptom. 
         /// </summary>
         /// <remarks>Defaults to empty string.</remarks>
-        public string SymptomDescription { get; set; } = string.Empty;
+        [Required]
+        public string SymptomDescription { get; set; }
     }
 }

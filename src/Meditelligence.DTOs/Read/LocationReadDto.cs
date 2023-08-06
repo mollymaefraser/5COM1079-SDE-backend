@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,11 @@ namespace Meditelligence.DTOs.Read
 {
     public class LocationReadDto
     {
+        /// <summary>
+        /// The unique ID for this location.
+        /// </summary>
+        public int LocationID { get; set; }
+
         /// <summary>
         /// The latitude position of this location.
         /// </summary>

@@ -10,7 +10,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.DataAccess",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.Models", "src\Meditelligence.Models\Meditelligence.Models.csproj", "{7D7A9B03-3E62-4EC4-9BBE-62CFC0FB0E03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meditelligence.DTOs", "src\Meditelligence.DTOs\Meditelligence.DTOs.csproj", "{0270E014-D61B-4D58-8861-6EB6F55D8E17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.DTOs", "src\Meditelligence.DTOs\Meditelligence.DTOs.csproj", "{0270E014-D61B-4D58-8861-6EB6F55D8E17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{332D3424-FF23-47EA-9E9F-EA4046EDC4BC}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Data Set for Symptons Illnesses.csv = docs\Data Set for Symptons Illnesses.csv
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

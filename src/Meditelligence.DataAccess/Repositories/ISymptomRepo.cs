@@ -6,7 +6,7 @@ namespace Meditelligence.DataAccess.Repositories
     {
         void CreateSymptom(Symptom symptom);
         IEnumerable<Symptom> GetAllSymptoms();
-        Symptom GetIllnessById(int id);
+        Symptom GetSymptomById(int id);
         bool SaveChanges();
     }
 }
