@@ -18,6 +18,13 @@ namespace Meditelligence.WebAPI.Profiles
             CreateMap<SymptomCreateDto, Symptom>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.SymptomName))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.SymptomDescription));
+
+            //Illness
+            CreateMap<Illness, IllnessReadDto>()
+                .ForMember(dest => dest.IllnessName, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.IllnessAdvice, opt => opt.MapFrom(src => src.Advice))
+                .ForMember(dest => dest.IllnessDescription, opt => opt.MapFrom(src => src.Description));
+
         }
     }
 }

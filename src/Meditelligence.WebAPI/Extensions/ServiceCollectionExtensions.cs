@@ -1,6 +1,7 @@
 ﻿using Meditelligence.DataAccess.Context;
 using Meditelligence.DataAccess.Repositories;
 using Meditelligence.DataAccess.Seeder;
+using Meditelligence.WebAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Meditelligence.WebAPI.Extensions
@@ -25,6 +26,11 @@ namespace Meditelligence.WebAPI.Extensions
             // add repo classes.
             services.AddScoped<IIllnessRepo, IllnessRepo>();
             services.AddScoped<ISymptomRepo, SymptomRepo>();
+        }
+
+        public static void AddPredictiveServices(this IServiceCollection services)
+        {
+            services.AddTransient<IDiseasePredictionService, DiseasePredictionService>();
         }
     }
 }
