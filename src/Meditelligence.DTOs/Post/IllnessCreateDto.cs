@@ -5,31 +5,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meditelligence.DTOs.Read
+namespace Meditelligence.DTOs.Post
 {
     /// <summary>
-    /// A DTO used to communicate information around an Illness.
+    /// A DTO used to create a illness record.
     /// </summary>
-    public class IllnessReadDto
+    public class IllnessCreateDto
     {
         /// <summary>
-        /// The unique ID for this illness record.
+        /// The name of the illness.
         /// </summary>
-        public int IllnessID { get; set; }
-
-        /// <summary>
-        /// The illness name.
-        /// </summary>
+        [Required]
         public string IllnessName { get; set; }
 
         /// <summary>
-        /// The illness description.
+        /// A brief description of the illness.
         /// </summary>
+        [Required]
         public string IllnessDescription { get; set; }
 
         /// <summary>
-        /// The illness advice.
+        /// A brief set of advice/instructions for patients who may have this illness.
         /// </summary>
+        [Required]
         public string IllnessAdvice { get; set; }
     }
 }

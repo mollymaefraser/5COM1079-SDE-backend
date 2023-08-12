@@ -21,14 +21,14 @@ namespace Meditelligence.DataAccess.Seeder
                 new Illness()
                 {
                     IllnessID = 1,
-                    Name = "Test disease 1",
+                    Name = "test disease 1",
                     Description = "This is a test disease that will be later removed",
                     Advice = "Speak to your GP for further information regarding this"
                 },
                 new Illness()
                 {
                     IllnessID = 2,
-                    Name = "Test disease 2",
+                    Name = "test disease 2",
                     Description = "This is another test disease that will be later removed",
                     Advice = "Speak to a specialist re. this condition, as it could be severe"
                 }
@@ -42,31 +42,31 @@ namespace Meditelligence.DataAccess.Seeder
                 new Symptom()
                 {
                     SymptomID = 1,
-                    Name = "Symptom 1",
+                    Name = "symptom 1",
                     Description = "High fever",
                 },
                 new Symptom()
                 {
                     SymptomID = 2,
-                    Name = "Symptom 2",
+                    Name = "symptom 2",
                     Description = "Short bursts of giggling",
                 },
                 new Symptom()
                 {
                     SymptomID = 3,
-                    Name = "Symptom 3",
+                    Name = "symptom 3",
                     Description = "Seeing hallucinations",
                 },
                 new Symptom()
                 {
                     SymptomID = 4,
-                    Name = "Symptom 4",
+                    Name = "symptom 4",
                     Description = "Extreme fits of anger",
                 },
                 new Symptom()
                 {
                     SymptomID = 5,
-                    Name = "Symptom 5",
+                    Name = "symptom 5",
                     Description = "No description",
                 }
             };

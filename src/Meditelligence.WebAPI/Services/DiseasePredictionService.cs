@@ -22,7 +22,7 @@ namespace Meditelligence.WebAPI.Services
             _mapper = mapper;
         }
 
-        public List<IllnessReadDto> Predict(List<string> symptoms)
+        public List<PredictionReadDto> Predict(List<string> symptoms)
         {
             // create join table for names
             var dataset = (from ep in _context.IllnessToSymptoms
@@ -71,19 +71,21 @@ namespace Meditelligence.WebAPI.Services
                 // Take the top 2 most matched.
                 var top2results = sortedDiseaseMatches.Take(2);
 
-                var finalResults = new List<IllnessReadDto>();
+                var finalResults = new List<PredictionReadDto>();
                 foreach (var disease in top2results)
                 {
                     _logger.LogInformation("{illness} : {number of symptoms matched}", disease.Key, disease.Value);
                     var illnessSymptomMatches = dataset.Where(i => i.Illness.Name == disease.Key);
-                    var illnessDto = _mapper.Map<IllnessReadDto>(illnessSymptomMatches.First().Illness);
-                    illnessDto.Symptoms = new();
+
+                    var predictionDto = new PredictionReadDto();
+                    predictionDto.Illness = _mapper.Map<IllnessReadDto>(illnessSymptomMatches.First().Illness);
+                    predictionDto.Symptoms = new();
                     foreach (var match in illnessSymptomMatches)
                     {
                         var symptomDto = _mapper.Map<SymptomReadDto>(match.Symptom);
-                        illnessDto.Symptoms.Add(symptomDto);
+                        predictionDto.Symptoms.Add(symptomDto);
                     }
-                    finalResults.Add(illnessDto);
+                    finalResults.Add(predictionDto);
                 }
 
                 return finalResults;

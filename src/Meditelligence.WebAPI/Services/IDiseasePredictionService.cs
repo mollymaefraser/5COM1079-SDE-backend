@@ -4,6 +4,6 @@ namespace Meditelligence.WebAPI.Services
 {
     public interface IDiseasePredictionService
     {
-        List<IllnessReadDto> Predict(List<string> symptoms);
+        List<PredictionReadDto> Predict(List<string> symptoms);
     }
 }

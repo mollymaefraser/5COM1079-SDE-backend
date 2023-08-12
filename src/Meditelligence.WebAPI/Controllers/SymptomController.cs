@@ -21,7 +21,7 @@ namespace Meditelligence.WebAPI.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("GetAllSymptoms")]
+        [HttpGet("GetAll")]
         public ActionResult<IEnumerable<SymptomReadDto>> GetAllSymptoms()
         {
             var symptomRecords = _repo.GetAllSymptoms();

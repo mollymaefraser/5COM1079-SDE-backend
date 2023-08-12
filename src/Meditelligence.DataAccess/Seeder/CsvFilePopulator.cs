@@ -30,20 +30,20 @@ namespace Meditelligence.DataAccess.Seeder
                 foreach (var record in records) 
                 {
                     // add illness
-                    if (!context.Illnesses.Any(i => i.Name == record.Illnesses))
+                    if (!context.Illnesses.Any(i => i.Name.ToLower() == record.Illnesses))
                     {
-                        context.Illnesses.Add(new Illness { Name = record.Illnesses, Description = record.Description, Advice = record.Advice });
+                        context.Illnesses.Add(new Illness { Name = record.Illnesses.ToLower(), Description = record.Description, Advice = record.Advice });
                         context.SaveChanges();
                     }
 
                     // add symptoms and linkages to database
                     var symptoms = record.Symptoms.Split('|');
-                    var illnessID = context.Illnesses.First(i => i.Name == record.Illnesses).IllnessID;
+                    var illnessID = context.Illnesses.First(i => i.Name == record.Illnesses.ToLower()).IllnessID;
 
                     foreach (var symptom in symptoms) 
                     {
                         // strip characters from dataset
-                        var processedSymptom = symptom.Replace("\r","").Replace("\n","");
+                        var processedSymptom = symptom.Replace("\r","").Replace("\n","").ToLower();
                         if (!context.Symptoms.Any(i => i.Name == processedSymptom))
                         {
                             context.Symptoms.Add(new Symptom { Name = processedSymptom });
