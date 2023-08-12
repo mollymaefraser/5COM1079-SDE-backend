@@ -75,12 +75,12 @@ namespace Meditelligence.WebAPI.Controllers
         public ActionResult<LocationReadDto> CreateLocation(LocationCreateDto LocationCreateDto)
         {
             try
-            {
-                var LocationModel = _mapper.Map<Location>(LocationCreateDto);
-                _repo.CreateLocation(LocationModel);
-                _repo.SaveChanges();
+        {
+            var LocationModel = _mapper.Map<Location>(LocationCreateDto);
+            _repo.CreateLocation(LocationModel);
+            _repo.SaveChanges();
 
-                var LocationReadDto = _mapper.Map<LocationReadDto>(LocationModel);
+            var LocationReadDto = _mapper.Map<LocationReadDto>(LocationModel);
 
                 return CreatedAtRoute(nameof(GetLocationById), new { id = LocationReadDto.LocationID }, LocationReadDto);
             }
