@@ -28,23 +28,35 @@ namespace Meditelligence.WebAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<LocationReadDto>>(LocationRecords));
         }
 
-        [HttpGet("GetLocation/{id}")]
-        public ActionResult<IEnumerable<LocationReadDto>> GetLocationById(int id)
+        [HttpGet("GetLocation/{id}", Name = nameof(GetLocationById))]
+        public ActionResult<LocationReadDto> GetLocationById(int id)
         {
             var LocationRecords = _repo.GetLocationById(id);
+            if (LocationRecords == null)
+            {
+                return BadRequest(_mapper.Map<LocationReadDto>(LocationRecords));
+            }
             return Ok(_mapper.Map<LocationReadDto>(LocationRecords));
         }
 
         [HttpPost("CreateLocation")]
-        public ActionResult<LocationReadDto> CreatePlatform(LocationCreateDto LocationCreateDto)
+        public ActionResult<LocationReadDto> CreateLocation(LocationCreateDto LocationCreateDto)
         {
-            var LocationModel = _mapper.Map<Location>(LocationCreateDto);
-            _repo.CreateLocation(LocationModel);
-            _repo.SaveChanges();
+            try
+            {
+                var LocationModel = _mapper.Map<Location>(LocationCreateDto);
+                _repo.CreateLocation(LocationModel);
+                _repo.SaveChanges();
 
-            var LocationReadDto = _mapper.Map<LocationReadDto>(LocationModel);
+                var LocationReadDto = _mapper.Map<LocationReadDto>(LocationModel);
 
-            return CreatedAtRoute(nameof(GetLocationById), new { Id = LocationReadDto.LocationID }, LocationReadDto);
+                return CreatedAtRoute(nameof(GetLocationById), new { id = LocationReadDto.LocationID }, LocationReadDto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
     }
 }

@@ -3,6 +3,7 @@ using Meditelligence.DataAccess.Context;
 using Meditelligence.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Meditelligence.DataAccess.Seeder
 {
     public static class CsvFilePopulator
     {
+        [ExcludeFromCodeCoverage(Justification ="This cannot be tested due to dependency on file.")]
         public static List<FileRecord> ReadFileRecords()
         {
             using (var reader = new StreamReader("../../docs/dataset.csv"))

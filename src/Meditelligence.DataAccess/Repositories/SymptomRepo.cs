@@ -25,6 +25,13 @@ namespace Meditelligence.DataAccess.Repositories
                 throw new ArgumentNullException(nameof(symptom));
             }
 
+            symptom.Name = symptom.Name.ToLower();
+
+            if (_context.Symptoms.Any(s => s.Name == symptom.Name))
+            {
+                throw new InvalidDataException("Symptom already exists");
+            }
+
             _context.Symptoms.Add(symptom);
         }
 

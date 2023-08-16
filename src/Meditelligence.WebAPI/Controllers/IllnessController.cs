@@ -27,23 +27,34 @@ namespace Meditelligence.WebAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<IllnessReadDto>>(illnessRecords));
         }
 
-        [HttpGet("GetIllness/{id}")]
-        public ActionResult<IEnumerable<IllnessReadDto>> GetIllnessById(int id)
+        [HttpGet("GetIllness/{id}", Name =nameof(GetIllnessById))]
+        public ActionResult<IllnessReadDto> GetIllnessById(int id)
         {
             var illnessRecord = _repo.GetIllnessById(id);
+            if (illnessRecord == null)
+            {
+                return BadRequest(_mapper.Map<IllnessReadDto>(illnessRecord));
+            }
             return Ok(_mapper.Map<IllnessReadDto>(illnessRecord));
         }
 
         [HttpPost("CreateIllness")]
-        public ActionResult<IllnessReadDto> CreatePlatform(IllnessCreateDto symptomCreateDto)
+        public ActionResult<IllnessReadDto> CreateIllness(IllnessCreateDto illnessCreateDto)
         {
-            var illnessModel = _mapper.Map<Illness>(symptomCreateDto);
-            _repo.CreateIllness(illnessModel);
-            _repo.SaveChanges();
+            try
+            {
+                var illnessModel = _mapper.Map<Illness>(illnessCreateDto);
+                _repo.CreateIllness(illnessModel);
+                _repo.SaveChanges();
 
-            var illnessReadDto = _mapper.Map<SymptomReadDto>(illnessModel);
+                var illnessReadDto = _mapper.Map<IllnessReadDto>(illnessModel);
 
-            return CreatedAtRoute(nameof(GetIllnessById), new { Id = illnessReadDto.SymptomID }, illnessReadDto);
+                return CreatedAtRoute(nameof(GetIllnessById), new { id = illnessReadDto.IllnessID }, illnessReadDto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

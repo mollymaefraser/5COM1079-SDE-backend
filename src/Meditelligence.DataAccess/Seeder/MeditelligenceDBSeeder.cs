@@ -3,6 +3,7 @@ using Meditelligence.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Meditelligence.DataAccess.Seeder
     /// <summary>
     /// A seeder class used to populate the database with records.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class MeditelligenceDBSeeder : IMeditelligenceDBSeeder
     {
         public IEnumerable<Illness> SeedIllnesses()

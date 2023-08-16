@@ -25,6 +25,11 @@ namespace Meditelligence.DataAccess.Repositories
                 throw new ArgumentNullException(nameof(location));
             }
 
+            if (_context.Locations.Any(l => l.Latitude == location.Latitude && l.Longitude == location.Longitude)) 
+            {
+                throw new InvalidDataException("This location already exists.");
+            }
+
             _context.Locations.Add(location);
         }
 

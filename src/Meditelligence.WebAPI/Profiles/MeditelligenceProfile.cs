@@ -2,9 +2,11 @@
 using Meditelligence.DTOs.Post;
 using Meditelligence.DTOs.Read;
 using Meditelligence.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Meditelligence.WebAPI.Profiles
 {
+    [ExcludeFromCodeCoverage]
     public class MeditelligenceProfile : Profile
     {
         public MeditelligenceProfile()
@@ -28,6 +30,10 @@ namespace Meditelligence.WebAPI.Profiles
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.IllnessName))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.IllnessDescription))
                 .ForMember(dest => dest.Advice, opt => opt.MapFrom(src => src.IllnessAdvice));
+
+            //Location
+            CreateMap<Location, LocationReadDto>();
+            CreateMap<LocationCreateDto, Location>();
         }
     }
 }

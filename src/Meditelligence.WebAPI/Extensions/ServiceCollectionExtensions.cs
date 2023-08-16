@@ -3,12 +3,14 @@ using Meditelligence.DataAccess.Repositories;
 using Meditelligence.DataAccess.Seeder;
 using Meditelligence.WebAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Meditelligence.WebAPI.Extensions
 {
     /// <summary>
     /// A class to provide wrapper extension methods for dependency injecting all services relating to Meditelligence, grouped by their position in the codebase.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class ServiceCollectionExtensions
     {
         /// <summary>
@@ -20,8 +22,8 @@ namespace Meditelligence.WebAPI.Extensions
             // add DB infrastructure
             services.AddSingleton<IMeditelligenceDBSeeder, MeditelligenceDBSeeder>();
 
-            //services.AddDbContext<MeditelligenceDBContext>(options => options.UseInMemoryDatabase("database.db"));
-            services.AddDbContext<MeditelligenceDBContext>(options => options.UseSqlite("DataSource=database.db"));
+            services.AddDbContext<MeditelligenceDBContext>(options => options.UseInMemoryDatabase("database.db"));
+            //services.AddDbContext<MeditelligenceDBContext>(options => options.UseSqlite("DataSource=database.db"));
 
             // add repo classes.
             services.AddScoped<IIllnessRepo, IllnessRepo>();
