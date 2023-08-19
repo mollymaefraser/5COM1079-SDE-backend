@@ -37,6 +37,9 @@ namespace Meditelligence.WebAPI.Extensions
             services.AddScoped<IServiceRepo, ServiceRepo>();
             services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<ILocationRepo, LocationRepo>();
+            services.AddScoped<ILocationToServiceRepo, LocationToServiceRepo>();
+            services.AddScoped<IUserLogsToSymptomsRepo, UserLogsToSymptomsRepo>();
+            services.AddScoped<IIllnessToSymptomRepo, IllnessToSymptomRepo>();
         }
 
         public static void AddPredictiveServices(this IServiceCollection services)
