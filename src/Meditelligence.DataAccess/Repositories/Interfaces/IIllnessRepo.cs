@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meditelligence.DataAccess.Repositories
+namespace Meditelligence.DataAccess.Repositories.Interfaces
 {
     /// <summary>
     /// An interface for a class that will interact with the <see cref="Illness"/> records in the database.
@@ -31,6 +31,10 @@ namespace Meditelligence.DataAccess.Repositories
         /// <param name="illness">The illness record to add.</param>
         void CreateIllness(Illness illness);
 
+        /// <summary>
+        /// Saves changes of the database.
+        /// </summary>
+        /// <returns>A boolean representing success or not of saving the db.</returns>
         bool SaveChanges();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Meditelligence.DataAccess.Context;
+using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,6 +19,7 @@ namespace Meditelligence.DataAccess.Repositories
             _context = context;
         }
 
+        /// <inheritdoc/>
         public void CreateSymptom(Symptom symptom)
         {
             if (symptom is null)
@@ -35,16 +37,19 @@ namespace Meditelligence.DataAccess.Repositories
             _context.Symptoms.Add(symptom);
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Symptom> GetAllSymptoms()
         {
             return _context.Symptoms.ToList();
         }
 
+        /// <inheritdoc/>
         public Symptom GetSymptomById(int id)
         {
             return _context.Symptoms.FirstOrDefault(i => i.SymptomID == id);
         }
 
+        /// <inheritdoc/>
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);

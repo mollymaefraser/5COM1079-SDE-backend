@@ -1,5 +1,6 @@
 ﻿using Meditelligence.DataAccess.Context;
 using Meditelligence.DataAccess.Repositories;
+using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.DataAccess.Seeder;
 using Meditelligence.WebAPI.Services;
 using Microsoft.EntityFrameworkCore;

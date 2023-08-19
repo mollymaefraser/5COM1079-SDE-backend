@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Meditelligence.DataAccess.Repositories;
+using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.DTOs.Post;
 using Meditelligence.DTOs.Read;
 using Meditelligence.Models;

@@ -1,4 +1,5 @@
 ﻿using Meditelligence.DataAccess.Context;
+using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,6 +19,7 @@ namespace Meditelligence.DataAccess.Repositories
             _context = context;
         }
 
+        /// <inheritdoc/>
         public void CreateLocation(Location location)
         {
             if (location is null)
@@ -33,16 +35,19 @@ namespace Meditelligence.DataAccess.Repositories
             _context.Locations.Add(location);
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Location> GetAllLocations()
         {
             return _context.Locations.ToList();
         }
 
+        /// <inheritdoc/>
         public Location GetLocationById(int id)
         {
             return _context.Locations.FirstOrDefault(i => i.LocationID == id);
         }
 
+        /// <inheritdoc/>
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
