@@ -14,11 +14,15 @@ namespace Meditelligence.WebAPI.Controllers
         private readonly ILocationRepo _repo;
 
         private readonly IMapper _mapper;
+        private readonly ILogger<LocationController> _logger;
+        private readonly ILocationToServiceRepo _joinRepo;
 
-        public LocationController(ILocationRepo repo, IMapper mapper)
+        public LocationController(ILocationRepo repo, IMapper mapper, ILocationToServiceRepo joinRepo, ILogger<LocationController> logger)
         {
             _repo = repo;
             _mapper = mapper;
+            _logger = logger;
+            _joinRepo = joinRepo;
         }
 
         [HttpGet("GetAll")]
@@ -57,6 +61,21 @@ namespace Meditelligence.WebAPI.Controllers
                 return BadRequest(ex.Message);
             }
             
+        }
+
+        [HttpPost("LinkLocationToService")]
+        public ActionResult<string> CreateServiceToLocation(int locationID, int serviceID)
+        {
+            try
+            {
+                _joinRepo.CreateLocationToService(locationID, serviceID);
+                _joinRepo.SaveChanges();
+                return Ok($"Added service to location");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

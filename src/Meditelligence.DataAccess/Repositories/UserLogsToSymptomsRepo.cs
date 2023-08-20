@@ -13,9 +13,9 @@ namespace Meditelligence.DataAccess.Repositories
     public class UserLogsToSymptomsRepo : IUserLogsToSymptomsRepo
     {
         private readonly MeditelligenceDBContext _context;
-        private readonly ILogger _logger;
+        private readonly ILogger<UserLogsToSymptomsRepo> _logger;
 
-        public UserLogsToSymptomsRepo(MeditelligenceDBContext context, ILogger logger)
+        public UserLogsToSymptomsRepo(MeditelligenceDBContext context, ILogger<UserLogsToSymptomsRepo> logger)
         {
             _context = context;
             _logger = logger;

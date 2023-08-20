@@ -13,11 +13,15 @@ namespace Meditelligence.WebAPI.Controllers
     {
         private readonly IIllnessRepo _repo;
         private readonly IMapper _mapper;
+        private readonly IIllnessToSymptomRepo _joinRepo;
+        private readonly ILogger<IllnessController> _logger;
 
-        public IllnessController(IIllnessRepo repo, IMapper mapper)
+        public IllnessController(IIllnessRepo repo, IMapper mapper, IIllnessToSymptomRepo joinRepo, ILogger<IllnessController> logger)
         {
             _repo = repo;
             _mapper = mapper;
+            _joinRepo = joinRepo;
+            _logger = logger;
         }
 
         [HttpGet("GetAll")]
@@ -56,5 +60,21 @@ namespace Meditelligence.WebAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("LinkIllnessToSymptom")]
+        public ActionResult<string> CreateIllnessToSymptom(int illnessID, int symptomID)
+        {
+            try
+            {
+                _joinRepo.CreateIllnessToSymptom(illnessID, symptomID);
+                _joinRepo.SaveChanges();
+                return Ok($"Added symptom to illness");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
