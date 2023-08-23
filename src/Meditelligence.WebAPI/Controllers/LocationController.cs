@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using GeoCoordinatePortable;
+using Meditelligence.DataAccess.Repositories;
 using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.DTOs.Post;
 using Meditelligence.DTOs.Read;
@@ -16,20 +18,46 @@ namespace Meditelligence.WebAPI.Controllers
         private readonly IMapper _mapper;
         private readonly ILogger<LocationController> _logger;
         private readonly ILocationToServiceRepo _joinRepo;
+        private readonly IServiceRepo _serviceRepo;
 
-        public LocationController(ILocationRepo repo, IMapper mapper, ILocationToServiceRepo joinRepo, ILogger<LocationController> logger)
+        public LocationController(ILocationRepo repo, IMapper mapper, ILocationToServiceRepo joinRepo, ILogger<LocationController> logger, IServiceRepo serviceRepo)
         {
             _repo = repo;
             _mapper = mapper;
             _logger = logger;
             _joinRepo = joinRepo;
+            _serviceRepo = serviceRepo;
         }
 
         [HttpGet("GetAll")]
-        public ActionResult<IEnumerable<LocationReadDto>> GetAllLocations()
+        public ActionResult<IEnumerable<LocationReadDto>> GetAllLocations(double? latitude = null, double? longitude = null)
         {
+            var resultList = new List<LocationReadDto>();
             var LocationRecords = _repo.GetAllLocations();
-            return Ok(_mapper.Map<IEnumerable<LocationReadDto>>(LocationRecords));
+            foreach (var location in LocationRecords)
+            {
+                var mappedDto = _mapper.Map<LocationReadDto>(location);
+                var joinrecords = _joinRepo.GetLocationToServiceByLocationID(location.LocationID);
+                foreach (var joinrecord in joinrecords)
+                {
+                    var serviceRecord = _mapper.Map<ServiceReadDto>(_serviceRepo.GetServiceById(joinrecord.RefServiceID));
+                    mappedDto.OfferedServices.Add(serviceRecord);
+                }
+
+                resultList.Add(mappedDto);
+            }
+
+            if (latitude is not null && longitude is not null)
+            {
+                var coord = new GeoCoordinate(latitude.Value, longitude.Value);
+
+                // this line both checks distance and extracts closest 3 locations.
+                var nearest = resultList.Select(x => new Tuple<LocationReadDto, GeoCoordinate>(x, new GeoCoordinate(x.Latitude, x.Longitude)))
+                    .OrderBy(x => x.Item2.GetDistanceTo(coord)).Take(3).Select(x => x.Item1);
+                return Ok(nearest.ToList());
+            }
+
+            return Ok(resultList);
         }
 
         [HttpGet("GetLocation/{id}", Name = nameof(GetLocationById))]

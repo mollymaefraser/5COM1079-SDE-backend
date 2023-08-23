@@ -41,7 +41,7 @@ namespace Meditelligence.DataAccess.Repositories
                 }
                 else
                 {
-                    _context.UserLogToSymptoms.Add(new HistorySymptom()
+                    _context.UserLogToSymptoms.Add(new UserLogSymptom()
                     {
                         RefLogID = logID,
                         RefSymptomID = symptomID,

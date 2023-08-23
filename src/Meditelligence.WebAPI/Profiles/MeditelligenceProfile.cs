@@ -34,6 +34,14 @@ namespace Meditelligence.WebAPI.Profiles
             //Location
             CreateMap<Location, LocationReadDto>();
             CreateMap<LocationCreateDto, Location>();
+
+            //Service
+            CreateMap<Service, ServiceReadDto>()
+                .ForMember(dest => dest.ServiceName, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.ServiceDescription, opt => opt.MapFrom(src => src.Description));
+            CreateMap<ServiceCreateDto, Service>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ServiceName))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.ServiceDescription));
         }
     }
 }

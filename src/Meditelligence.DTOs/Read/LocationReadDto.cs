@@ -47,6 +47,6 @@ namespace Meditelligence.DTOs.Read
         /// <summary>
         /// The services associated with this facility.
         /// </summary>
-        public List<ServiceReadDto> OfferedServices { get; set; } 
+        public List<ServiceReadDto> OfferedServices { get; set; } = new();
     }
 }

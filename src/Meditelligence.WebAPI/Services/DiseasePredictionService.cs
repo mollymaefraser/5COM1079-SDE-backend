@@ -33,7 +33,6 @@ namespace Meditelligence.WebAPI.Services
                                Illness = illness,
                                Symptom = symptom,
                            });
-
             // convert to dictionary
             Dictionary<string, List<string>> symptomDiseaseAssociations = new();
             var potentialDiseases = new Dictionary<string, int>();

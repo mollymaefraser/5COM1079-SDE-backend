@@ -23,8 +23,8 @@ namespace Meditelligence.WebAPI.Extensions
             // add DB infrastructure
             services.AddSingleton<IMeditelligenceDBSeeder, MeditelligenceDBSeeder>();
 
-            services.AddDbContext<MeditelligenceDBContext>(options => options.UseInMemoryDatabase("database.db"));
-            //services.AddDbContext<MeditelligenceDBContext>(options => options.UseSqlite("DataSource=database.db"));
+            //services.AddDbContext<MeditelligenceDBContext>(options => options.UseInMemoryDatabase("database.db"));
+            services.AddDbContext<MeditelligenceDBContext>(options => options.UseSqlite("DataSource=database.db"));
 
             // add repo classes.
             services.AddScoped<IIllnessRepo, IllnessRepo>();
@@ -33,6 +33,8 @@ namespace Meditelligence.WebAPI.Extensions
             services.AddScoped<ILocationToServiceRepo, LocationToServiceRepo>();
             services.AddScoped<IUserLogsToSymptomsRepo, UserLogsToSymptomsRepo>();
             services.AddScoped<IIllnessToSymptomRepo, IllnessToSymptomRepo>();
+            services.AddScoped<IUserLogRepo, UserLogRepo>();
+            services.AddScoped<IServiceRepo, ServiceRepo>();
         }
 
         public static void AddPredictiveServices(this IServiceCollection services)

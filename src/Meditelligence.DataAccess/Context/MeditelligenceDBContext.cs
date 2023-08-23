@@ -56,12 +56,12 @@ namespace Meditelligence.DataAccess.Context
         /// <summary>
         /// Database set for user logs.
         /// </summary>
-        public DbSet<History> UserLogs { get; set; }
+        public DbSet<UserLog> UserLogs { get; set; }
 
         /// <summary>
         /// Database set for join table between user log and symptoms.
         /// </summary>
-        public DbSet<HistorySymptom> UserLogToSymptoms { get; set; }
+        public DbSet<UserLogSymptom> UserLogToSymptoms { get; set; }
 
         /// <summary>
         /// Initialises DbContext object with options and seeder.

@@ -22,6 +22,18 @@ namespace Meditelligence.DataAccess.Repositories
         }
 
         /// <inheritdoc/>
+        public IEnumerable<LocationToService> GetLocationToServiceByLocationID(int id)
+        {
+            return _context.LocationToServices.Where(ls => ls.RefLocationID == id);
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<LocationToService> GetLocationToServiceByServiceID(int id)
+        {
+            return _context.LocationToServices.Where(ls => ls.RefServiceID == id);
+        }
+
+        /// <inheritdoc/>
         public void CreateLocationToService(int locationID, int serviceID)
         {
             if (_context.Locations.Find(locationID) == null)

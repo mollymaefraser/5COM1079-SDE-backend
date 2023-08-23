@@ -68,7 +68,7 @@ namespace Meditelligence.WebAPI.Controllers
             {
                 _joinRepo.CreateIllnessToSymptom(illnessID, symptomID);
                 _joinRepo.SaveChanges();
-                return Ok($"Added symptom to illness");
+                return Ok("Added symptom to illness");
             }
             catch (Exception ex)
             {

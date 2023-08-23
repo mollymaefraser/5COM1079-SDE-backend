@@ -82,7 +82,7 @@ namespace Meditelligence.DataAccessTests.Repositories
             var seeder = new Mock<IMeditelligenceDBSeeder>();
 
             var context = new MeditelligenceDBContext(options, seeder.Object);
-            context.UserLogs.Add(new History()
+            context.UserLogs.Add(new UserLog()
             {
                 LogID = 1,
             });
@@ -97,7 +97,7 @@ namespace Meditelligence.DataAccessTests.Repositories
                     SymptomID = 2,
                 },
             });
-            context.UserLogToSymptoms.Add(new HistorySymptom()
+            context.UserLogToSymptoms.Add(new UserLogSymptom()
             {
                 RefLogID = 1,
                 RefSymptomID = 1,

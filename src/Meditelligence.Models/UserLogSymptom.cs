@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Meditelligence.Models
 {
     [PrimaryKey(nameof(RefLogID), nameof(RefSymptomID))]
-    public class HistorySymptom
+    public class UserLogSymptom
     {
         /// <summary>
         /// The reference LogID this record joins.
@@ -26,7 +26,7 @@ namespace Meditelligence.Models
         /// <summary>
         /// The reference Log record this join table links to.
         /// </summary>
-        public History RefLog { get; set; }
+        public UserLog RefLog { get; set; }
 
         /// <summary>
         /// The reference symptom record this join table links to.

@@ -1,7 +1,23 @@
-﻿namespace Meditelligence.DataAccess.Repositories.Interfaces
+﻿using Meditelligence.Models;
+
+namespace Meditelligence.DataAccess.Repositories.Interfaces
 {
     public interface ILocationToServiceRepo
     {
+        /// <summary>
+        /// Returns a list of records that contain the locationID.
+        /// </summary>
+        /// <param name="id">the location ID</param>
+        /// <returns>A list of records with LocationID specified present.</returns>
+        IEnumerable<LocationToService> GetLocationToServiceByLocationID(int id);
+
+        /// <summary>
+        /// Returns a list of records that contain the ServiceID.
+        /// </summary>
+        /// <param name="id">The serviceID to search for.</param>
+        /// <returns>A list of records with that service ID.</returns>
+        IEnumerable<LocationToService> GetLocationToServiceByServiceID(int id);
+
         /// <summary>
         /// Adds a join record between location and service.
         /// </summary>
