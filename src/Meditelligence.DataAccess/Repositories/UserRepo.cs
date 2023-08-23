@@ -1,5 +1,6 @@
 ﻿using Meditelligence.DataAccess.Context;
 using Meditelligence.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,24 +18,37 @@ namespace Meditelligence.DataAccess.Repositories
             _context = context;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<User> CreateUser()
         {
-            return _context.Users.ToList();
-        }
-
-        public void CreateUser(User user)
-        {
+            User user = new User();
             if (user is null)
             {
                 throw new ArgumentNullException(nameof(user));
             }
 
-            _context.Users.Add(user);
+            return (IEnumerable<User>)_context.Users.Add(user);
+        }
+
+        public bool UserLogIn(bool isAdmin)
+        {
+            return isAdmin;
+        }
+
+        public IEnumerable<User> DeleteUser()
+        {
+            User user = new User();
+            _context.Users.Attach(user);
+            return (IEnumerable<User>)_context.Users.Remove(user);
         }
 
         public User GetUserById(int id)
         {
             return _context.Users.FirstOrDefault(i => i.UserID == id);
+        }
+
+        public User GetUserByEmailAndPassword(string email, string password)
+        {
+            return _context.Users.FirstOrDefault(i => i.Email == email && i.Password == password);
         }
 
         public bool SaveChanges()

@@ -10,16 +10,17 @@ namespace Meditelligence.DataAccess.Repositories
     public interface IUserRepo
     {
         /// <summary>
-        /// Gets all <see cref="User"/> records from the DbContext. 
-        /// </summary>
-        /// <returns>A list of Users from the database.</returns>
-        IEnumerable<User> GetAllUsers();
-
-        /// <summary>
         /// Adds a <see cref="User"/> record to the database.
         /// </summary>
         /// <param name="user">The user record to add.</param>
-        void CreateUser(User user);
+        IEnumerable<User> CreateUser();
+
+        bool UserLogIn(bool isAdmin);
+
+        /// <summary>
+        /// Deletes a <see cref="User"/> record from database.
+        /// </summary>
+        IEnumerable<User> DeleteUser();
 
         /// <summary>
         /// Gets a individual <see cref="User"/> record based on the ID provided.
@@ -27,6 +28,14 @@ namespace Meditelligence.DataAccess.Repositories
         /// <param name="id">The ID of the record to return.</param>
         /// <returns>An <see cref="User"/> record with the corresponding ID.</returns>
         User GetUserById(int id);
+
+        /// <summary>
+        /// Gets a individual <see cref="User"/> account based on the email and password provided.
+        /// </summary>
+        /// <param name="email">The email of the account to return.</param>
+        /// <param name="password">The password of the account to return.</param>
+        /// <returns>An <see cref="User"/> account with the corresponding email and password.</returns>
+        User GetUserByEmailAndPassword(string email, string password);
 
         bool SaveChanges();
     }
