@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,11 @@ namespace Meditelligence.DTOs.Read
 {
     public class UserReadDto
     {
+        /// <summary>
+        /// The user's unique ID.
+        /// </summary>
+        public int UserID { get; set; }
+
         /// <summary>
         /// The user's first name.
         /// </summary>
@@ -27,7 +33,5 @@ namespace Meditelligence.DTOs.Read
         /// If thr user has admin privileges
         /// </summary>
         public bool IsUserAdmin { get; set; }
-
-        //History is not yet included and needs to be reviewed
     }
 }

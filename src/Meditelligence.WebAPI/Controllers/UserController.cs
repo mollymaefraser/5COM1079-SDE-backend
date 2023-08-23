@@ -1,5 +1,6 @@
 ﻿using Meditelligence.DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Principal;
 
 namespace Meditelligence.WebAPI.Controllers
 {
@@ -15,9 +16,21 @@ namespace Meditelligence.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllUsers()
+        public IActionResult CreateUser()
         {
-            return Ok(_repo.GetAllUsers());
+            return Ok(_repo.CreateUser());
+        }
+
+        [HttpGet]
+        public IActionResult UserLogIn(bool isAdmin)
+        {
+            return Ok(_repo.UserLogIn(isAdmin));
+        }
+
+        [HttpGet]
+        public IActionResult DeleteUser()
+        {
+            return Ok(_repo.DeleteUser());
         }
 
     }
