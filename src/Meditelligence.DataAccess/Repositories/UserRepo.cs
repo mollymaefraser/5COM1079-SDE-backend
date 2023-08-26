@@ -18,20 +18,18 @@ namespace Meditelligence.DataAccess.Repositories
             _context = context;
         }
 
-        public IEnumerable<User> CreateUser()
+        public void CreateUser(User user, string email)
         {
-            User user = new User();
             if (user is null)
             {
                 throw new ArgumentNullException(nameof(user));
             }
-
-            return (IEnumerable<User>)_context.Users.Add(user);
-        }
-
-        public bool UserLogIn(bool isAdmin)
-        {
-            return isAdmin;
+            var item = _context.Users.Find(email);
+            if (item.ToString() == user.Email)
+            {
+                throw new ArgumentException("Email already exisits", nameof(email));
+            }
+            _context.Users.Add(user);
         }
 
         public IEnumerable<User> DeleteUser()

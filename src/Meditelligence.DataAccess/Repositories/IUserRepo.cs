@@ -13,9 +13,7 @@ namespace Meditelligence.DataAccess.Repositories
         /// Adds a <see cref="User"/> record to the database.
         /// </summary>
         /// <param name="user">The user record to add.</param>
-        IEnumerable<User> CreateUser();
-
-        bool UserLogIn(bool isAdmin);
+        void CreateUser(User user, string email);
 
         /// <summary>
         /// Deletes a <see cref="User"/> record from database.
