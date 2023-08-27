@@ -2,6 +2,7 @@
 using Meditelligence.DataAccess.Seeder;
 using Meditelligence.DTOs.Read;
 using Meditelligence.WebAPI.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Services;
@@ -12,6 +13,7 @@ using System.Net;
 
 namespace Meditelligence.WebAPI.Controllers
 {
+    [EnableCors("Policy")]
     [ApiController]
     [Route("[controller]")]
     public class PredictionController : Controller
@@ -35,7 +37,7 @@ namespace Meditelligence.WebAPI.Controllers
         [HttpPost]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        public ActionResult<IEnumerable<PredictionReadDto>> PredictiveDiagnosis([FromForm]List<string> symptoms)
+        public ActionResult<IEnumerable<PredictionReadDto>> PredictiveDiagnosis([FromBody]List<string> symptoms)
         {
             if (symptoms is null || symptoms.Count < 3)
             {

@@ -12,6 +12,12 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddCors(options => options.AddPolicy("Policy", policy =>
+            {
+                policy.WithOrigins("http://localhost:5173").AllowAnyHeader();
+            })
+        );
+
         builder.Services.AddMeditelligenceDbServices();
         builder.Services.AddPredictiveServices();
         builder.Services.AddControllers();
@@ -40,6 +46,7 @@ internal class Program
 
         app.UseAuthorization();
 
+        app.UseCors();
         app.MapControllers();
 
         app.Run();
