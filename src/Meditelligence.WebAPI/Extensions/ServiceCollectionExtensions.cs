@@ -1,4 +1,4 @@
-﻿using Meditelligence.DataAccess.Context;
+using Meditelligence.DataAccess.Context;
 using Meditelligence.DataAccess.Repositories;
 using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.DataAccess.Seeder;

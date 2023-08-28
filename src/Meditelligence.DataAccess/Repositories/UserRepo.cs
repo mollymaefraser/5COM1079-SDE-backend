@@ -47,7 +47,7 @@ namespace Meditelligence.DataAccess.Repositories
         {
             return _context.Users.FirstOrDefault(i => i.UserID == id);
         }
-
+        
         /// <inheritdoc/>
         public User GetUserByEmail(string email)
         {

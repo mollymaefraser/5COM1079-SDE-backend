@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.DTOs.Post;
 using Meditelligence.DTOs.Read;
@@ -48,7 +48,6 @@ namespace Meditelligence.WebAPI.Controllers
                 user.Password = _hasher.HashPassword(user, user.Password);
                 _repo.CreateUser(user);
                 _repo.SaveChanges();
-                Console.WriteLine($"{user.Password}");
             }
             catch (Exception ex)
             {
