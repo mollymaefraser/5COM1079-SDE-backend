@@ -5,20 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Meditelligence.DataAccess.Repositories
+namespace Meditelligence.DataAccess.Repositories.Interfaces
 {
     public interface IUserRepo
     {
         /// <summary>
-        /// Adds a <see cref="User"/> record to the database.
+        /// Adds a <see cref="User"/> record to the database, based on whether the email already exists.
         /// </summary>
         /// <param name="user">The user record to add.</param>
-        void CreateUser(User user, string email);
+        void CreateUser(User user);
 
         /// <summary>
         /// Deletes a <see cref="User"/> record from database.
         /// </summary>
-        IEnumerable<User> DeleteUser();
+        /// <param name="user">The user record to delete.</param>
+        void DeleteUser(User user);
 
         /// <summary>
         /// Gets a individual <see cref="User"/> record based on the ID provided.
@@ -28,12 +29,11 @@ namespace Meditelligence.DataAccess.Repositories
         User GetUserById(int id);
 
         /// <summary>
-        /// Gets a individual <see cref="User"/> account based on the email and password provided.
+        /// Gets a individual <see cref="User"/> account based on the email provided.
         /// </summary>
         /// <param name="email">The email of the account to return.</param>
-        /// <param name="password">The password of the account to return.</param>
-        /// <returns>An <see cref="User"/> account with the corresponding email and password.</returns>
-        User GetUserByEmailAndPassword(string email, string password);
+        /// <returns>A <see cref="User"/> record with the email.</returns>
+        User GetUserByEmail(string email);
 
         bool SaveChanges();
     }

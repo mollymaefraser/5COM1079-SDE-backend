@@ -1,6 +1,8 @@
 using Meditelligence.DataAccess.Context;
 using Meditelligence.DataAccess.Seeder;
+using Meditelligence.Models;
 using Meditelligence.WebAPI.Extensions;
+using Microsoft.AspNetCore.Identity;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -19,6 +21,7 @@ internal class Program
         );
 
         builder.Services.AddMeditelligenceDbServices();
+        builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         builder.Services.AddPredictiveServices();
         builder.Services.AddControllers();
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
