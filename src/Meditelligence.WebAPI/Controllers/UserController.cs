@@ -61,15 +61,15 @@ namespace Meditelligence.WebAPI.Controllers
         }
 
         [HttpPost("Login")]
-        public ActionResult<UserReadDto> LoginUser(string email, string password)
+        public ActionResult<UserReadDto> LoginUser([FromBody]RegisterDTO registerInfo)
         {
-            var search = _repo.GetUserByEmail(email);
+            var search = _repo.GetUserByEmail(registerInfo.Email);
             if (search is null)
             {
                 return BadRequest("Email or password incorrect.");
             }
 
-            var result = _hasher.VerifyHashedPassword(search, search.Password, password);
+            var result = _hasher.VerifyHashedPassword(search, search.Password, registerInfo.Password);
             if (result != PasswordVerificationResult.Success)
             {
                 return BadRequest("Email or password incorrect.");
