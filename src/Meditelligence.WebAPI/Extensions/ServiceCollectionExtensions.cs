@@ -23,6 +23,7 @@ namespace Meditelligence.WebAPI.Extensions
             // add repo classes.
             services.AddScoped<IIllnessRepo, IllnessRepo>();
             services.AddScoped<ISymptomRepo, SymptomRepo>();
+            services.AddScoped<IUserRepo, UserRepo>();
         }
     }
 }
