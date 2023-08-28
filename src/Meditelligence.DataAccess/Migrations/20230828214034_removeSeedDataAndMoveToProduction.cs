@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System.Diagnostics.CodeAnalysis;
 
 #nullable disable
 
@@ -7,6 +8,7 @@
 namespace Meditelligence.DataAccess.Migrations
 {
     /// <inheritdoc />
+    [ExcludeFromCodeCoverage]
     public partial class removeSeedDataAndMoveToProduction : Migration
     {
         /// <inheritdoc />

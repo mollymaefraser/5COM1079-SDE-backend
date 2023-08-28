@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Meditelligence.DataAccess.Repositories
 {
-    public class UserRepo :IUserRepo
+    public class UserRepo : IUserRepo
     {
         private readonly MeditelligenceDBContext _context;
 
