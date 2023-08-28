@@ -3,6 +3,7 @@ using System;
 using Meditelligence.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Meditelligence.DataAccess.Migrations
 {
     [DbContext(typeof(MeditelligenceDBContext))]
-    partial class MeditelligenceDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230828214034_removeSeedDataAndMoveToProduction")]
+    partial class removeSeedDataAndMoveToProduction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.9");

@@ -76,9 +76,6 @@ namespace Meditelligence.DataAccess.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Illness>().HasData(_seeder.SeedIllnesses());
-            modelBuilder.Entity<Symptom>().HasData(_seeder.SeedSymptoms());
-            modelBuilder.Entity<IllnessToSymptom>().HasData(_seeder.SeedIllnessToSymptoms());
             modelBuilder.Entity<Location>().HasData(_seeder.SeedLocations());
             modelBuilder.Entity<LocationToService>().HasData(_seeder.SeedLocationToServices());
             modelBuilder.Entity<Service>().HasData(_seeder.SeedServices());
