@@ -3,12 +3,14 @@ using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.DTOs.Post;
 using Meditelligence.DTOs.Read;
 using Meditelligence.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Principal;
 
 namespace Meditelligence.WebAPI.Controllers
 {
+    [EnableCors("Policy")]
     [ApiController]
     [Route("[controller]")]
     public class UserController : Controller
