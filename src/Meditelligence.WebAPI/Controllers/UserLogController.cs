@@ -3,6 +3,7 @@ using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.DTOs.Read;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using Microsoft.AspNetCore.Cors;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Meditelligence.WebAPITests.Controllers
 {
+    [EnableCors("Policy")]
     [ApiController]
     [Route("[controller]")]
     public class UserLogController : Controller

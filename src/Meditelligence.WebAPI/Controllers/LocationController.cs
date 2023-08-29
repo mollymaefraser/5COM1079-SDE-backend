@@ -5,10 +5,12 @@ using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.DTOs.Post;
 using Meditelligence.DTOs.Read;
 using Meditelligence.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Meditelligence.WebAPI.Controllers
 {
+    [EnableCors("Policy")]
     [ApiController]
     [Route("[controller]")]
     public class LocationController : Controller
