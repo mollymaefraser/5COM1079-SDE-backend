@@ -1,12 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System.Diagnostics.CodeAnalysis;
 
 #nullable disable
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
+
 namespace Meditelligence.DataAccess.Migrations
 {
     /// <inheritdoc />
+    [ExcludeFromCodeCoverage]
     public partial class IllnessToSymptomMigration : Migration
     {
         /// <inheritdoc />

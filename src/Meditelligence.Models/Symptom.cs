@@ -39,7 +39,7 @@ namespace Meditelligence.Models
         /// <summary>
         /// A corresponding list of log that associate with this record.
         /// </summary>
-        public ICollection<HistorySymptom> HistorySymptoms { get; set; }
+        public ICollection<UserLogSymptom> HistorySymptoms { get; set; }
 
     }
 }

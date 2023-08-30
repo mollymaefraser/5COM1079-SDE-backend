@@ -44,7 +44,6 @@ namespace Meditelligence.Models
         /// <summary>
         /// A collection of all associated logs with this user.
         /// </summary>
-        [ForeignKey("LogID")]
-        public ICollection<History> Logs { get; set; }
+        public ICollection<UserLog> Logs { get; set; }
     }
 }

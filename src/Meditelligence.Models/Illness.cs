@@ -44,6 +44,6 @@ namespace Meditelligence.Models
         /// <summary>
         /// A list representing all logs this illness appears in.
         /// </summary>
-        public ICollection<History> LogList { get; set; }
+        public ICollection<UserLog> LogList { get; set; }
     }
 }

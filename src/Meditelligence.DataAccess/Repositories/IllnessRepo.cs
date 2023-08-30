@@ -1,4 +1,5 @@
 ﻿using Meditelligence.DataAccess.Context;
+using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,6 +19,7 @@ namespace Meditelligence.DataAccess.Repositories
             _context = context;
         }
 
+        /// <inheritdoc/>
         public void CreateIllness(Illness illness)
         {
             if (illness is null)
@@ -25,19 +27,29 @@ namespace Meditelligence.DataAccess.Repositories
                 throw new ArgumentNullException(nameof(illness));
             }
 
+            illness.Name = illness.Name.ToLower();
+
+            if (_context.Illnesses.Any(i => i.Name == illness.Name))
+            {
+                throw new InvalidDataException("Illness already exists.");
+            }
+
             _context.Illnesses.Add(illness);
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Illness> GetAllIllnesses()
         {
             return _context.Illnesses.ToList();
         }
 
+        /// <inheritdoc/>
         public Illness GetIllnessById(int id)
         {
             return _context.Illnesses.FirstOrDefault(i => i.IllnessID == id);
         }
 
+        /// <inheritdoc/>
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);

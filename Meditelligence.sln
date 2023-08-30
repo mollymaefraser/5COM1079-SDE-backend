@@ -10,7 +10,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.DataAccess",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.Models", "src\Meditelligence.Models\Meditelligence.Models.csproj", "{7D7A9B03-3E62-4EC4-9BBE-62CFC0FB0E03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meditelligence.DTOs", "src\Meditelligence.DTOs\Meditelligence.DTOs.csproj", "{0270E014-D61B-4D58-8861-6EB6F55D8E17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.DTOs", "src\Meditelligence.DTOs\Meditelligence.DTOs.csproj", "{0270E014-D61B-4D58-8861-6EB6F55D8E17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{332D3424-FF23-47EA-9E9F-EA4046EDC4BC}"
+	ProjectSection(SolutionItems) = preProject
+		docs\dataset.csv = docs\dataset.csv
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meditelligence.DataAccessTests", "tests\Meditelligence.DataAccessTests\Meditelligence.DataAccessTests.csproj", "{5FE02A59-EEFF-48B5-B082-353324E7A590}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{414021CB-750F-4A27-88BB-7BFE298C35F6}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\GenerateTestEvidence.ps1 = scripts\GenerateTestEvidence.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +50,10 @@ Global
 		{0270E014-D61B-4D58-8861-6EB6F55D8E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0270E014-D61B-4D58-8861-6EB6F55D8E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0270E014-D61B-4D58-8861-6EB6F55D8E17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FE02A59-EEFF-48B5-B082-353324E7A590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FE02A59-EEFF-48B5-B082-353324E7A590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FE02A59-EEFF-48B5-B082-353324E7A590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FE02A59-EEFF-48B5-B082-353324E7A590}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

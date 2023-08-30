@@ -1,4 +1,5 @@
 ﻿using Meditelligence.DataAccess.Context;
+using Meditelligence.DataAccess.Repositories.Interfaces;
 using Meditelligence.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Meditelligence.DataAccess.Repositories
 {
-    public class UserRepo :IUserRepo
+    public class UserRepo : IUserRepo
     {
         private readonly MeditelligenceDBContext _context;
 
@@ -18,37 +19,57 @@ namespace Meditelligence.DataAccess.Repositories
             _context = context;
         }
 
-        public void CreateUser(User user, string email)
+        /// <inheritdoc/>
+        public void CreateUser(User user)
         {
             if (user is null)
             {
                 throw new ArgumentNullException(nameof(user));
             }
-            var item = _context.Users.Find(email);
-            if (item.ToString() == user.Email)
+            
+            // if email exists in database, not a unique record, throw error.
+            if (_context.Users.Any(u => u.Email == user.Email.ToLower()))
             {
-                throw new ArgumentException("Email already exisits", nameof(email));
+                throw new ArgumentException("Email is already used, please enter another.");
             }
+
             _context.Users.Add(user);
         }
 
-        public IEnumerable<User> DeleteUser()
+        /// <inheritdoc/>
+        public void DeleteUser(User user)
         {
-            User user = new User();
-            _context.Users.Attach(user);
-            return (IEnumerable<User>)_context.Users.Remove(user);
+            _context.Users.Remove(user);
         }
 
+        /// <inheritdoc/>
         public User GetUserById(int id)
         {
             return _context.Users.FirstOrDefault(i => i.UserID == id);
         }
-
-        public User GetUserByEmailAndPassword(string email, string password)
+        
+        /// <inheritdoc/>
+        public User GetUserByEmail(string email)
         {
-            return _context.Users.FirstOrDefault(i => i.Email == email && i.Password == password);
+            return _context.Users.FirstOrDefault(i => i.Email == email);
         }
 
+        /// <inheritdoc/>
+        public void ChangePassword(int userId, string newHashedPassword)
+        {
+            var user = GetUserById(userId);
+            if (user != null)
+            {
+                user.Password = newHashedPassword;
+                SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("Couldn't find the user supplied.");
+            }
+        }
+
+        /// <inheritdoc/>
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);

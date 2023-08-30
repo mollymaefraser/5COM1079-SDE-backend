@@ -3,6 +3,7 @@ using Meditelligence.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Meditelligence.DataAccess.Context
     /// <summary>
     /// The derived <see cref="DbContext"/> class for specific use within Meditelligence.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class MeditelligenceDBContext : DbContext
     {
         private readonly IMeditelligenceDBSeeder _seeder;
@@ -54,12 +56,12 @@ namespace Meditelligence.DataAccess.Context
         /// <summary>
         /// Database set for user logs.
         /// </summary>
-        public DbSet<History> UserLogs { get; set; }
+        public DbSet<UserLog> UserLogs { get; set; }
 
         /// <summary>
         /// Database set for join table between user log and symptoms.
         /// </summary>
-        public DbSet<HistorySymptom> UserLogToSymptoms { get; set; }
+        public DbSet<UserLogSymptom> UserLogToSymptoms { get; set; }
 
         /// <summary>
         /// Initialises DbContext object with options and seeder.
@@ -74,9 +76,6 @@ namespace Meditelligence.DataAccess.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Illness>().HasData(_seeder.SeedIllnesses());
-            modelBuilder.Entity<Symptom>().HasData(_seeder.SeedSymptoms());
-            modelBuilder.Entity<IllnessToSymptom>().HasData(_seeder.SeedIllnessToSymptoms());
             modelBuilder.Entity<Location>().HasData(_seeder.SeedLocations());
             modelBuilder.Entity<LocationToService>().HasData(_seeder.SeedLocationToServices());
             modelBuilder.Entity<Service>().HasData(_seeder.SeedServices());
