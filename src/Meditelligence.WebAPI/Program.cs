@@ -16,7 +16,7 @@ internal class Program
         // Add services to the container.
         builder.Services.AddCors(options => options.AddPolicy("Policy", policy =>
             {
-                policy.WithOrigins("http://localhost:5173").AllowAnyHeader();
+                policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
             })
         );
 
