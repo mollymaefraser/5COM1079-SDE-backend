@@ -55,6 +55,21 @@ namespace Meditelligence.DataAccess.Repositories
         }
 
         /// <inheritdoc/>
+        public void ChangePassword(int userId, string newHashedPassword)
+        {
+            var user = GetUserById(userId);
+            if (user != null)
+            {
+                user.Password = newHashedPassword;
+                SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("Couldn't find the user supplied.");
+            }
+        }
+
+        /// <inheritdoc/>
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);

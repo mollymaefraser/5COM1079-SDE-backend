@@ -35,6 +35,13 @@ namespace Meditelligence.DataAccess.Repositories.Interfaces
         /// <returns>A <see cref="User"/> record with the email.</returns>
         User GetUserByEmail(string email);
 
+        /// <summary>
+        /// Changes the password for a supplied user.
+        /// </summary>
+        /// <param name="userId">The userID of the record to change</param>
+        /// <param name="newHashedPassword">the new password, pre-hashed.</param>
+        void ChangePassword(int userId, string newHashedPassword);
+
         bool SaveChanges();
     }
 }

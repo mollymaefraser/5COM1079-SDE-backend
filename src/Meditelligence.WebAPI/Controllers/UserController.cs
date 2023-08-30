@@ -77,11 +77,35 @@ namespace Meditelligence.WebAPI.Controllers
             return Ok(_mapper.Map<UserReadDto>(search));
         }
 
-        [HttpDelete]
+        [HttpPut("UpdatePassword")]
+        public ActionResult<string> ChangeUserPassword(ChangePasswordDto newPasswordRequest)
+        {
+            if (newPasswordRequest is null)
+            {
+                return BadRequest("No new password supplied.");
+            }
+
+            newPasswordRequest.NewPassword = _hasher.HashPassword(null, newPasswordRequest.NewPassword);
+            try
+            {
+                _repo.ChangePassword(newPasswordRequest.UserID, newPasswordRequest.NewPassword);
+                return Ok("Password successfully changed.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+        [HttpDelete("DeleteAccount")]
         public IActionResult DeleteUser(UserReadDto user)
         {
-            _repo.DeleteUser(_mapper.Map<User>(user));
-            return Ok();
+            var recordToDelete = _repo.GetUserById(user.UserID);
+            _repo.DeleteUser(recordToDelete);
+            _repo.SaveChanges();
+            return Ok("Account deleted");
         }
     }
 }

@@ -73,6 +73,36 @@ namespace Meditelligence.DataAccessTests.Repositories
             Assert.NotNull(context.LocationToServices.Find(1, 2));
         }
 
+        [Fact]
+        public void GetLocationToServiceByLocationID_WhenCalled_ReturnsList()
+        {
+            // arrange
+            var context = GenerateDb("GetLocationToServiceByLocationID");
+            var repo = new LocationToServiceRepo(context, _logger.Object);
+
+            // act 
+            var result = repo.GetLocationToServiceByLocationID(1);
+
+            // assert
+            Assert.NotNull(result);
+            Assert.True(result.Count() == 1);
+        }
+
+        [Fact]
+        public void GetLocationToServiceByServiceID_WhenCalled_ReturnsList()
+        {
+            // arrange
+            var context = GenerateDb("GetLocationToServiceByServiceID");
+            var repo = new LocationToServiceRepo(context, _logger.Object);
+
+            // act 
+            var result = repo.GetLocationToServiceByServiceID(1);
+
+            // assert
+            Assert.NotNull(result);
+            Assert.True(result.Count() == 1);
+        }
+
         private MeditelligenceDBContext GenerateDb(string dbName)
         {
             var options = new DbContextOptionsBuilder<MeditelligenceDBContext>()
