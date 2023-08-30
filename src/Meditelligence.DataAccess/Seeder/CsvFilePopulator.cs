@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Meditelligence.DataAccess.Seeder
 {
+    [ExcludeFromCodeCoverage(Justification = "This cannot be tested due to dependency on file.")]
     public static class CsvFilePopulator
     {
-        [ExcludeFromCodeCoverage(Justification ="This cannot be tested due to dependency on file.")]
         public static List<FileRecord> ReadFileRecords()
         {
             using (var reader = new StreamReader("../../docs/dataset.csv"))

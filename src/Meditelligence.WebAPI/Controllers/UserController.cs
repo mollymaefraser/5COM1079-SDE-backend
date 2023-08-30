@@ -100,7 +100,7 @@ namespace Meditelligence.WebAPI.Controllers
 
 
         [HttpDelete("DeleteAccount")]
-        public IActionResult DeleteUser(UserReadDto user)
+        public ActionResult<string> DeleteUser(UserReadDto user)
         {
             var recordToDelete = _repo.GetUserById(user.UserID);
             _repo.DeleteUser(recordToDelete);
